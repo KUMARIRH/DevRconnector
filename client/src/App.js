@@ -8,25 +8,24 @@ import Login from './components/auth/Login';
 
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 const  App = () => (
-<Fragment>
-   <Router>
-      <Navbar/>
-      <Routes>
-         <section className="container"> 
-            <Route path="/" element={<Landing/>} /> 
-         </section>
-         <section className="container">
-            <Route path="/register" element={<Register/>} /> 
-         </section>  
-         <section className="container"> 
-            <Route path="/login" element={<Login/>} />
-         </section> 
-      </Routes> 
-   </Router>     
-</Fragment>
- 
+   <Fragment>
+      <Router>
+         <Navbar/>
+         <Routes>
+            
+               <Route path="/" element={<Landing/>} /> 
+            
+            
+               <Route path="/register" element={<Register/>} /> 
+            
+            
+               <Route path="/login" element={<Login/>} />
+         </Routes> 
+      </Router>     
+  
+      </Fragment> 
   
 
-);
+); 
  
 export default App;
