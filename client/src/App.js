@@ -1,5 +1,5 @@
 import './App.css';
-import React, { Fragment} from 'react';
+import React, {Fragment} from 'react';
 import Navbar from './components/layout/Navbar';
 import Landing from './components/layout/Landing';
 import Register from './components/auth/Register';
@@ -13,9 +13,8 @@ const  App = () => (
    <Provider store={store}>
    <Fragment>
       <Router>
-         <Navbar/><Alert />
-
-
+         <Navbar/>
+         <Alert />
          <Routes>
             
                <Route path="/" element={<Landing/>} /> 
