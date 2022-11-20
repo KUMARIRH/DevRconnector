@@ -28,9 +28,9 @@ router.post(
     console.log(errors)
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
-      console.log("error here");
+      
     }
-    console.log("error here");
+    
     const { name, email, password } = req.body;
     try {
       let user = await User.findOne({ email });
@@ -39,7 +39,7 @@ router.post(
           .status(400)
           .json({ errors: [{ msg: "User already exists" }] });
       }
-      console.log("does it come here")
+      
 
       const avatar = gravatar.url(email, {
         s: "200",
