@@ -1,58 +1,44 @@
-import './App.css';
-import React, {Fragment, useEffect} from 'react';
-import Navbar from './components/layout/Navbar';
-import Landing from './components/layout/Landing';
-import Register from './components/auth/Register';
-import Login from './components/auth/Login';
-import Alert from './components/layout/Alert';
-import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
-import Dashboard from './components/dashboard/Dashboard';
-import PrivateRoute from './components/routing/PrivateRoute';
- 
+import './App.css'
+import React, { Fragment, useEffect } from 'react'
+import Navbar from './components/layout/Navbar'
+import Landing from './components/layout/Landing'
+import Register from './components/auth/Register'
+import Login from './components/auth/Login'
+import Alert from './components/layout/Alert'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import Dashboard from './components/dashboard/Dashboard'
+import PrivateRoute from './components/routing/PrivateRoute'
+
 //Redux
-import {Provider} from 'react-redux';
-import store from './store';
-import {loadUser} from './actions/auth';
-import setAuthToken from './utils/setAuthToken';
+import { Provider } from 'react-redux'
+import store from './store'
+import { loadUser } from './actions/auth'
+import setAuthToken from './utils/setAuthToken'
 
+if (localStorage.token) {
+  setAuthToken(localStorage.token)
+}
+//
+const App = () => {
+  useEffect(() => {
+    store.dispatch(loadUser())
+  }, [])
+  return (
+    <Provider store={store}>
+      <Fragment>
+        <Router>
+          <Navbar />
+          <Alert />
+          <Routes>
+            <Route path="/" element={<Landing />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
+            <PrivateRoute path="/dashboard" element={<Dashboard />} />
+          </Routes>
+        </Router>
+      </Fragment>
+    </Provider>
+  )
+}
 
-
-
-if(localStorage.token) {
-   setAuthToken(localStorage.token);
-}   
-
-const  App = () => {
-   useEffect(() => {
-      
-      store.dispatch(loadUser()); 
-     
-   
-    
-   }, []);
-  return(
-   <Provider store={store}>
-   <Fragment>
-      <Router>
-         <Navbar/>
-         <Alert />
-         <Routes>
-            
-               <Route path="/" element={<Landing/>} /> 
-               <Route path="/register" element={<Register/>} /> 
-               <Route path="/login" element={<Login/>} />
-               <Route path="/dashboard" element={<Dashboard/>} />
-
-            
-         </Routes> 
-         
-      </Router>     
-      
-      </Fragment> 
-      </Provider>
-  
-
-); 
-  }
- 
-export default App;
+export default App
