@@ -1,5 +1,4 @@
-{        
-  "mongoURI": "mongodb+srv://RajKH:RajKH@devconnector.l6uuv.mongodb.net/?retryWrites=true&w=majority",            
+{ "mongoURI": "mongodb+srv://RAJH:RAJH@devcluster.7n1ora8.mongodb.net/?retryWrites=true&w=majority",
   "jwtSecret": "mysecrettoken",
   "githubClientId": "ae0c284a0106392a1460",
   "githubSecret":"976258dd2f4d9e9089c83474d9536eb034aabda0"
