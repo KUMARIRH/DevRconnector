@@ -178,11 +178,11 @@ router.post(
 // @ POST   DELETE api/posts/comments/:id/comment_id
 // @desc    Delete Comment
 // @access  Private
-router.delete('/comment/:id/comment_id', auth, async (req, res) => {
+router.delete('/comment/:id/:comment_id', auth, async (req, res) => {
   try {
     const post = await Post.findById(req.params.id)
     // pull out comment
-    console.log(comments)
+
     const comment = post.comments.find(
       (comment) => comment.id === req.params.comment_id,
     )
@@ -204,7 +204,7 @@ router.delete('/comment/:id/comment_id', auth, async (req, res) => {
     res.json(post.comments)
   } catch (err) {
     console.error(err.message)
-    consome.log('here')
+
     res.status(500).send('Server Error')
   }
 })
