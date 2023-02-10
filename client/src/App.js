@@ -7,7 +7,7 @@ import Login from './components/auth/Login'
 import Alert from './components/layout/Alert'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import Dashboard from './components/dashboard/Dashboard'
-import CreateProfile from './profile-forms/CreateProfile'
+import CreateProfile from './components/profile-forms/CreateProfile'
 import PrivateRoute from './components/routing/PrivateRoute'
 
 //Redux
