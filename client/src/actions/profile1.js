@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { setAlert } from './alert'
-
+import { Link, useNavigate } from 'react-router-dom'
 import { GET_PROFILE, PROFILE_ERROR } from './types'
 
 // Get current users profile
@@ -9,7 +9,7 @@ export const getCurrentProfile = () => async (dispatch) => {
     const res = await axios.get('/api/profile/me')
 
     dispatch({
-      tye: GET_PROFILE,
+      type: GET_PROFILE,
       payload: res.data,
     })
   } catch (err) {
@@ -21,7 +21,7 @@ export const getCurrentProfile = () => async (dispatch) => {
 }
 
 // Create or update profile
-export const createProfile = (formData, history, edit = false) => async (
+export const createProfile = (formData, navigate, edit = false) => async (
   dispatch,
 ) => {
   try {
@@ -30,14 +30,14 @@ export const createProfile = (formData, history, edit = false) => async (
         'Content-Type': 'application/json',
       },
     }
-    const res = await axios.post('/api/profile', formData, config)
+    const res = await axios.post('/profile', formData)
     dispatch({
       type: GET_PROFILE,
       payload: res.data,
     })
-    dispatch(setAlert(edit ? 'Profile Updated' : 'Profile Created'))
+    dispatch(setAlert(edit ? 'Profile Updated' : 'Profile Created', 'success'))
     if (!edit) {
-      history.push('/dashboard')
+      navigate('/dashboard')
     }
   } catch (err) {
     const errors = err.response.data.errors
